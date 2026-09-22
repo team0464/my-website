@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>เลื่อนๆดูแล้วคิดถึงเลยบอกต่อ</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+
+    overflow:hidden;
+
+    font-family:
+        "Segoe UI",
+        "Noto Sans Thai",
+        sans-serif;
+
+    color:#75637e;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(255,255,255,.95),
+            rgba(249,228,255,.8) 25%,
+            rgba(232,221,255,.7) 45%,
+            transparent 70%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffe7f0 0%,
+            #f3e6ff 48%,
+            #e2efff 100%
+        );
+
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(55px);
+}
+
+
+.glow1{
+
+    width:430px;
+    height:430px;
+
+    left:-180px;
+    top:-180px;
+
+    background:
+        rgba(255,169,207,.55);
+
+}
+
+
+.glow2{
+
+    width:430px;
+    height:430px;
+
+    right:-180px;
+    bottom:-180px;
+
+    background:
+        rgba(163,190,255,.5);
+
+}
+
+
+.glow3{
+
+    width:360px;
+    height:360px;
+
+    left:50%;
+    top:52%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        rgba(255,216,248,.55);
+
+    filter:blur(80px);
+
+}
+
+
+/* =====================================================
+   STARS
+===================================================== */
+
+.star{
+
+    position:absolute;
+
+    color:white;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px rgba(255,186,230,.8);
+
+    animation:
+        twinkle
+        2.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+.star1{
+    left:12%;
+    top:15%;
+    font-size:18px;
+}
+
+
+.star2{
+    right:13%;
+    top:20%;
+    font-size:14px;
+    animation-delay:.8s;
+}
+
+
+.star3{
+    left:23%;
+    top:38%;
+    font-size:10px;
+    animation-delay:1.4s;
+}
+
+
+.star4{
+    right:24%;
+    top:37%;
+    font-size:11px;
+    animation-delay:1.9s;
+}
+
+
+.star5{
+    right:9%;
+    bottom:19%;
+    font-size:18px;
+    animation-delay:.5s;
+}
+
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.3;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.35);
+    }
+
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+.heart{
+
+    position:absolute;
+
+    color:#ef9abd;
+
+    opacity:.55;
+
+    animation:
+        floatHeart
+        5s
+        ease-in-out
+        infinite;
+
+}
+
+
+.heart1{
+
+    left:17%;
+    top:25%;
+
+    font-size:15px;
+
+}
+
+
+.heart2{
+
+    right:17%;
+    top:28%;
+
+    font-size:19px;
+
+    animation-delay:1.4s;
+
+}
+
+
+.heart3{
+
+    left:31%;
+    top:18%;
+
+    font-size:11px;
+
+    animation-delay:2s;
+
+}
+
+
+@keyframes floatHeart{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(6deg);
+    }
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    position:absolute;
+
+    top:25px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:100%;
+
+    text-align:center;
+
+    z-index:50;
+
+}
+
+
+.header-tag{
+
+    display:inline-block;
+
+    padding:
+        7px 21px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.42);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
+    backdrop-filter:
+        blur(12px);
+
+    color:#987e9c;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+}
+
+
+.header h1{
+
+    margin-top:8px;
+
+    font-size:
+        clamp(28px,5vw,41px);
+
+    font-weight:600;
+
+    color:#716079;
+
+}
+
+
+.header p{
+
+    margin-top:5px;
+
+    font-size:12px;
+
+    color:#9b8ca2;
+
+}
+
+
+/* =====================================================
+   MAIN SCENE
+===================================================== */
+
+.scene{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    perspective:
+        1500px;
+
+    touch-action:none;
+
+    cursor:grab;
+
+}
+
+
+.scene:active{
+    cursor:grabbing;
+}
+
+
+/* =====================================================
+   FLOOR LIGHT
+===================================================== */
+
+.floor{
+
+    position:absolute;
+
+    left:50%;
+    top:65%;
+
+    width:620px;
+    height:190px;
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(68deg);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.85),
+            rgba(222,200,245,.3),
+            transparent 70%
+        );
+
+    filter:blur(5px);
+
+}
+
+
+/* =====================================================
+   MAIN 3D RINGS
+===================================================== */
+
+.ring{
+
+    position:absolute;
+
+    left:50%;
+    top:60%;
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(69deg);
+
+    pointer-events:none;
+
+}
+
+
+.ring1{
+
+    width:530px;
+    height:170px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.85);
+
+    box-shadow:
+
+        0 0 15px
+        rgba(255,180,230,.7),
+
+        0 0 45px
+        rgba(212,190,255,.45);
+
+    animation:
+        ringAnimation
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+
+.ring2{
+
+    width:425px;
+    height:135px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.78);
+
+    box-shadow:
+        0 0 20px
+        rgba(235,196,255,.45);
+
+    animation:
+        ringAnimation
+        3s
+        ease-in-out
+        infinite;
+
+    animation-delay:.6s;
+
+}
+
+
+.ring3{
+
+    width:320px;
+    height:100px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.65);
+
+}
+
+
+@keyframes ringAnimation{
+
+    0%,100%{
+        opacity:.45;
+        transform:
+            translate(-50%,-50%)
+            rotateX(69deg)
+            scale(.96);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            translate(-50%,-50%)
+            rotateX(69deg)
+            scale(1.03);
+    }
+
+}
+
+
+/* =====================================================
+   CAROUSEL
+===================================================== */
+
+.carousel{
+
+    position:absolute;
+
+    left:50%;
+    top:51%;
+
+    width:1px;
+    height:1px;
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+/* =====================================================
+   PHOTO CARD
+===================================================== */
+
+.photo{
+
+    position:absolute;
+
+    left:-100px;
+    top:-135px;
+
+    width:200px;
+    height:270px;
+
+    padding:9px;
+
+    border-radius:24px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.97),
+            rgba(255,255,255,.62)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.95);
+
+    box-shadow:
+
+        0 30px 55px
+        rgba(103,76,125,.22),
+
+        0 4px 10px
+        rgba(255,255,255,.9)
+        inset;
+
+    transform-style:
+        preserve-3d;
+
+    backface-visibility:hidden;
+
+    transition:
+
+        transform .15s linear,
+        opacity .5s ease,
+        filter .5s ease;
+
+}
+
+
+/* =====================================================
+   CARD DEPTH
+===================================================== */
+
+.photo-depth{
+
+    position:absolute;
+
+    inset:-7px;
+
+    border-radius:28px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.6),
+            rgba(212,190,232,.2)
+        );
+
+    transform:
+        translateZ(-14px);
+
+    z-index:-1;
+
+    filter:blur(1px);
+
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.photo img{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    border-radius:17px;
+
+    background:#f8f2fa;
+
+}
+
+
+/* =====================================================
+   GLASS SHINE
+===================================================== */
+
+.shine{
+
+    position:absolute;
+
+    left:12px;
+    top:12px;
+
+    width:75%;
+    height:38%;
+
+    border-radius:50%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    transform:
+        rotate(-18deg)
+        translateZ(15px);
+
+    pointer-events:none;
+
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.label{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-14px;
+
+    transform:
+        translateX(-50%)
+        translateZ(35px);
+
+    padding:
+        7px 16px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0 9px 20px
+        rgba(94,67,110,.15);
+
+    color:#89748e;
+
+    font-size:11px;
+
+    white-space:nowrap;
+
+}
+
+
+/* =====================================================
+   FLOATING PARTICLES
+===================================================== */
+
+.particle{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 10px white;
+
+    animation:
+        particleFloat
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.particle1{
+
+    left:34%;
+    top:47%;
+
+}
+
+
+.particle2{
+
+    left:65%;
+    top:48%;
+
+    animation-delay:1s;
+
+}
+
+
+.particle3{
+
+    left:43%;
+    top:59%;
+
+    animation-delay:1.8s;
+
+}
+
+
+.particle4{
+
+    left:57%;
+    top:59%;
+
+    animation-delay:2.4s;
+
+}
+
+
+@keyframes particleFloat{
+
+    0%,100%{
+        opacity:.2;
+        transform:
+            translateY(0)
+            scale(.7);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            translateY(-12px)
+            scale(1.4);
+    }
+
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.bottom{
+
+    position:absolute;
+
+    left:50%;
+    bottom:22px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:60;
+
+    text-align:center;
+
+}
+
+
+.hint{
+
+    display:inline-block;
+
+    padding:
+        8px 18px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.5);
+
+    border:
+        1px solid
+        rgba(255,255,255,.75);
+
+    backdrop-filter:
+        blur(10px);
+
+    color:#927e99;
+
+    font-size:11px;
+
+}
+
+
+.next{
+
+    display:block;
+
+    margin:
+        11px auto 0;
+
+    padding:
+        12px 27px;
+
+    border:none;
+
+    border-radius:30px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #f3a5c8,
+            #b9b6ee
+        );
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 11px 28px
+        rgba(174,140,198,.3);
+
+    transition:.25s;
+
+}
+
+
+.next:hover{
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =====================================================
+   TRANSITION
+===================================================== */
+
+.transition{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffe5ef,
+            #f0e4ff,
+            #e1efff
+        );
+
+    transition:
+        opacity .7s ease;
+
+}
+
+
+.transition.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+
+.transition span{
+
+    font-size:65px;
+
+    animation:
+        transitionAnimation
+        1s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes transitionAnimation{
+
+    0%,100%{
+        transform:scale(.85);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .header{
+
+        top:20px;
+
+    }
+
+
+    .header-tag{
+
+        font-size:9px;
+
+        padding:
+            6px 16px;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .header h1{
+
+        font-size:27px;
+
+    }
+
+
+    .header p{
+
+        font-size:10px;
+
+    }
+
+
+    .photo{
+
+        width:140px;
+        height:195px;
+
+        left:-70px;
+        top:-97px;
+
+        padding:7px;
+
+    }
+
+
+    .ring1{
+
+        width:380px;
+        height:120px;
+
+    }
+
+
+    .ring2{
+
+        width:300px;
+        height:94px;
+
+    }
+
+
+    .ring3{
+
+        width:225px;
+        height:70px;
+
+    }
+
+
+    .floor{
+
+        width:390px;
+        height:130px;
+
+    }
+
+
+    .hint{
+
+        font-size:10px;
+
+    }
+
+
+    .next{
+
+        font-size:12px;
+
+        padding:
+            11px 23px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media(max-width:380px){
+
+    .photo{
+
+        width:125px;
+        height:175px;
+
+        left:-62.5px;
+        top:-87.5px;
+
+    }
+
+
+    .header h1{
+
+        font-size:24px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background">
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
+
+
+    <div class="star star1">✦</div>
+    <div class="star star2">✧</div>
+    <div class="star star3">·</div>
+    <div class="star star4">✦</div>
+    <div class="star star5">✧</div>
+
+
+    <div class="heart heart1">♥</div>
+    <div class="heart heart2">♥</div>
+    <div class="heart heart3">♡</div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<div class="header">
+
+    <div>
+        
+        
+    </div>
+
+    <h1>
+        เลื่อนๆดูแล้วคิดถึงเลยทำหน้านี้งับ
+    </h1>
+
+    <p>
+        ถึงภาพจะเก่า แต่ความรู้สึกยังเหมือนเดิมนะคะ
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     3D SCENE
+===================================================== -->
+
+<div
+    class="scene"
+    id="scene"
+>
+
+
+    <!-- FLOOR -->
+
+    <div class="floor"></div>
+
+
+    <!-- LIGHT RINGS -->
+
+    <div class="ring ring1"></div>
+
+    <div class="ring ring2"></div>
+
+    <div class="ring ring3"></div>
+
+
+    <!-- PARTICLES -->
+
+    <div class="particle particle1"></div>
+    <div class="particle particle2"></div>
+    <div class="particle particle3"></div>
+    <div class="particle particle4"></div>
+
+
+    <!-- =================================================
+         PHOTO CAROUSEL
+    ================================================== -->
+
+    <div
+        class="carousel"
+        id="carousel"
+    >
+
+
+        <!-- PHOTO 1 -->
+
+        <div
+            class="photo"
+            data-index="0"
+        >
+
+            <div class="photo-depth"></div>
+
+            <img
+                src="images/photo1.jpg"
+                alt="คิดถึงปิ้งยางอยากกินน"
+            >
+
+            <div class="shine"></div>
+
+            <div class="label">
+                คิดถึงปิ้งยางอยากกินน
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div
+            class="photo"
+            data-index="1"
+        >
+
+            <div class="photo-depth"></div>
+
+            <img
+                src="images/photo2.jpg"
+                alt="memory 02"
+            >
+
+            <div class="shine"></div>
+
+            <div class="label">
+                พึ่งเคยหมุนกาชาจำได้ว่าหมุนยับเลย
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div
+            class="photo"
+            data-index="2"
+        >
+
+            <div class="photo-depth"></div>
+
+            <img
+                src="images/photo3.jpg"
+                alt="memory 03"
+            >
+
+            <div class="shine"></div>
+
+            <div class="label">
+                เป็ฯครั้งแรกเลยที่เคยมาคหน้าแล้วหนูมาคให้ด้วยย
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+
+        <div
+            class="photo"
+            data-index="3"
+        >
+
+            <div class="photo-depth"></div>
+
+            <img
+                src="images/photo4.png"
+                alt="memory 04"
+            >
+
+            <div class="shine"></div>
+
+            <div class="label">
+                เห็นแล้วชอบนะเซ็กซี่ดี
+            </div>
+
+        </div>
+        <!-- PHOTO 5 -->
+
+        <div
+            class="photo"
+            data-index="2"
+        >
+
+            <div class="photo-depth"></div>
+
+            <img
+                src="images/photo5.jpg"
+                alt="รูปนี้น่ารักมากเลยขี้เซาา"
+            >
+
+            <div class="shine"></div>
+
+            <div class="label">
+                รูปนี้ก็น่ารัก ห้ามโกรธน้าา
+            </div>
+
+        </div>
+        <!-- PHOTO 5 -->
+
+        <div
+            class="photo"
+            data-index="2"
+        >
+
+            <div class="photo-depth"></div>
+
+            <img
+                src="images/photo6.jpg"
+                alt="รูปนี้น่ารักมากเลยขี้เซาา"
+            >
+
+            <div class="shine"></div>
+
+            <div class="label">
+                อย่าหน้าบูมเยอะน้าอ้วน
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     BOTTOM
+===================================================== -->
+
+<div class="bottom">
+
+   
+
+
+    <button
+        class="next"
+        id="next"
+    >
+        หน้าสุดท้ายแล้วคั้บที่รัก 
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     TRANSITION
+===================================================== -->
+
+<div
+    class="transition"
+    id="transition"
+>
+
+    <span>
+        🧸
+    </span>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const scene =
+    document.getElementById("scene");
+
+const carousel =
+    document.getElementById("carousel");
+
+const photos =
+    document.querySelectorAll(".photo");
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+const total =
+    photos.length;
+
+
+let rotation = 0;
+
+let dragging = false;
+
+let startX = 0;
+
+let startRotation = 0;
+
+let autoRotate = true;
+
+
+/* =====================================================
+   RADIUS
+===================================================== */
+
+let radius =
+    window.innerWidth <= 600
+        ? 225
+        : 340;
+
+
+/* =====================================================
+   UPDATE
+===================================================== */
+
+function updateCarousel(){
+
+    photos.forEach(
+        (photo,index)=>{
+
+            const baseAngle =
+                index *
+                (360 / total);
+
+            const angle =
+                baseAngle +
+                rotation;
+
+
+            const radians =
+                angle *
+                Math.PI /
+                180;
+
+
+            /*
+             * ตำแหน่งซ้าย-ขวา
+             */
+
+            const x =
+                Math.sin(radians) *
+                radius;
+
+
+            /*
+             * ความลึก
+             */
+
+            const depth =
+                Math.cos(radians);
+
+
+            /*
+             * ขยับขึ้นลงเล็กน้อย
+             */
+
+            const y =
+                depth *
+                25;
+
+
+            /*
+             * ให้รูปด้านหน้าใหญ่
+             */
+
+            const scale =
+                .72 +
+                ((depth + 1) / 2)
+                * .30;
+
+
+            /*
+             * ด้านหน้าชัด
+             * ด้านหลังจาง
+             */
+
+            const opacity =
+                .32 +
+                ((depth + 1) / 2)
+                * .68;
+
+
+            /*
+             * เอียงตามวงกลม
+             */
+
+            const tilt =
+                -Math.sin(radians)
+                * 25;
+
+
+            /*
+             * ความลึกเพิ่มเติม
+             */
+
+            const z =
+                depth *
+                120;
+
+
+            photo.style.transform = `
+
+                translate3d(
+                    ${x}px,
+                    ${y}px,
+                    ${z}px
+                )
+
+                rotateY(
+                    ${tilt}deg
+                )
+
+                scale(
+                    ${scale}
+                )
+
+            `;
+
+
+            photo.style.opacity =
+                opacity;
+
+
+            photo.style.filter =
+                depth > -.2
+                    ? "blur(0)"
+                    : "blur(1.2px)";
+
+
+            photo.style.zIndex =
+                Math.round(
+                    (depth + 1) *
+                    100
+                );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   AUTO ROTATE
+===================================================== */
+
+function animation(){
+
+    if(
+        autoRotate &&
+        !dragging
+    ){
+
+        rotation += .12;
+
+    }
+
+
+    updateCarousel();
+
+
+    requestAnimationFrame(
+        animation
+    );
+
+}
+
+
+animation();
+
+
+/* =====================================================
+   MOUSE DRAG
+===================================================== */
+
+scene.addEventListener(
+    "pointerdown",
+    function(e){
+
+        dragging = true;
+
+        startX =
+            e.clientX;
+
+        startRotation =
+            rotation;
+
+        scene.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+);
+
+
+scene.addEventListener(
+    "pointermove",
+    function(e){
+
+        if(!dragging)
+            return;
+
+
+        const movement =
+            e.clientX -
+            startX;
+
+
+        rotation =
+            startRotation +
+            movement *
+            .45;
+
+    }
+);
+
+
+scene.addEventListener(
+    "pointerup",
+    function(){
+
+        dragging = false;
+
+    }
+);
+
+
+scene.addEventListener(
+    "pointercancel",
+    function(){
+
+        dragging = false;
+
+    }
+);
+
+
+/* =====================================================
+   TOUCH
+===================================================== */
+
+scene.addEventListener(
+    "touchstart",
+    function(e){
+
+        dragging = true;
+
+        startX =
+            e.touches[0].clientX;
+
+        startRotation =
+            rotation;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+scene.addEventListener(
+    "touchmove",
+    function(e){
+
+        if(!dragging)
+            return;
+
+
+        const movement =
+            e.touches[0].clientX -
+            startX;
+
+
+        rotation =
+            startRotation +
+            movement *
+            .45;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+scene.addEventListener(
+    "touchend",
+    function(){
+
+        dragging = false;
+
+    }
+);
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    function(){
+
+        radius =
+            window.innerWidth <= 600
+                ? 225
+                : 340;
+
+    }
+);
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+document
+    .getElementById("next")
+    .addEventListener(
+        "click",
+        function(){
+
+            autoRotate = false;
+
+            document
+                .getElementById(
+                    "transition"
+                )
+                .classList
+                .add("show");
+
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "letter.html";
+
+                },
+                800
+            );
+
+        }
+    );
+
+</script>
+<script src="music.js"></script>
+</body>
+
+</html>
